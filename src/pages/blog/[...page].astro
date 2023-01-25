@@ -1,0 +1,59 @@
+---
+import Card from '@/components/Card.astro';
+import Layout from '@/layouts/Layout.astro';
+
+export const getStaticPaths = async ({ paginate }) => {
+	const posts = (await Astro.glob('./posts/*.{md,mdx}'))
+		//.filter((p) => p.url != null && p.url != '')
+		.sort((a, z) => z.frontmatter.publishedAt - a.frontmatter.publishedAt);
+
+	return paginate(posts, { pageSize: 10 });
+};
+
+const { page } = Astro.props;
+const {
+	url: { next, prev },
+	currentPage,
+} = page;
+const posts = page.data as Record<string, any>[];
+---
+
+<Layout title="Blog page">
+	<main>
+		<nav>
+			<a href={prev}>Previous page</a>
+			<span>{currentPage}</span>
+			<a href={next}>Next page</a>
+		</nav>
+		<ul>
+			{
+				posts.map(({ url, frontmatter: { title, short_description, slug } }) => (
+					<li>
+						<article>
+							<Card body={short_description} title={title} href={url} />
+						</article>
+					</li>
+				))
+			}
+		</ul>
+	</main>
+</Layout>
+
+<style>
+	nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	nav a {
+		text-decoration: none;
+	}
+	nav span {
+		font-size: 1.5rem;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+</style>

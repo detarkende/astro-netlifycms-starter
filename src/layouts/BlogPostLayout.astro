@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/Layout.astro';
+---
+
+<Layout title="Blogpost">
+	<main>
+		<article>
+			<slot />
+		</article>
+	</main>
+</Layout>
+
+<style>
+	main {
+		display: flex;
+		justify-content: center;
+		padding: 2rem 0;
+	}
+	article {
+		max-width: 800px;
+		width: 100%;
+	}
+</style>
