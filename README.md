@@ -1,5 +1,13 @@
 
+
 # Astro NetlifyCMS starter
+This project is a simple blog built with [Astro](https://astro.build/) and [Netlify CMS](https://www.netlifycms.org/).
+Astro has a built-in feature that can generate pages (in this case for blog posts) from Markdown files.
+Netlify CMS gives you an easy-to-use Content Management System, that can manage data (like blog posts) and multimedia (images / videos) with a nice user interface. The data is stored in Markdown files in your repository, and the multimedia files are uploaded to your repository as well. 
+We just have to connect these two, so that Astro can receive the files created by the CMS. **This is what this project does for you.**
+
+You can fork this repository (or download it as a zip) and you get a very simple skeleton of a blog that you can customize and make pretty with the frontend tools of your choice. Go make something great! 😁🚀
+
 
 ## Setup
 1. Fork the repository.
